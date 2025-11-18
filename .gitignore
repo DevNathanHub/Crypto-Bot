@@ -1,8 +1,10 @@
 node_modules/
 .env
 .env.local
-logs/
+logs/*.log
+logs/pm2-*.log
 dist/
 coverage/
 /.idea
 .vscode
+.pm2

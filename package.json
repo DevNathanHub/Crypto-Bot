@@ -9,7 +9,14 @@
     "dev": "nodemon --watch src --exec node src/index.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
-    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:stop": "pm2 stop crypto-hub-bot",
+    "pm2:restart": "pm2 restart crypto-hub-bot",
+    "pm2:delete": "pm2 delete crypto-hub-bot",
+    "pm2:logs": "pm2 logs crypto-hub-bot",
+    "pm2:monit": "pm2 monit",
+    "pm2:status": "pm2 status"
   },
   "engines": {
     "node": ">=20"

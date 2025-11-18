@@ -247,6 +247,59 @@ export async function generate(prompt, options = {}) {
   }
 }
 
+/**
+ * Generate dynamic global content with rotating regions and topics
+ * This creates unique content every time without being repetitive
+ */
+export function generateDynamicGlobalContent(type = 'general') {
+    const regions = [
+      { name: 'Europe', countries: ['UK', 'Germany', 'France', 'Spain', 'Italy', 'Netherlands', 'Sweden'], payment: 'SEPA, crypto' },
+      { name: 'Asia-Pacific', countries: ['Singapore', 'Japan', 'South Korea', 'Hong Kong', 'India', 'Australia'], payment: 'crypto, local methods' },
+      { name: 'Middle East', countries: ['UAE', 'Saudi Arabia', 'Qatar', 'Kuwait', 'Bahrain'], payment: 'crypto, bank transfers' },
+      { name: 'Americas', countries: ['USA', 'Canada', 'Brazil', 'Mexico', 'Argentina', 'Chile'], payment: 'crypto, cards' },
+      { name: 'Africa', countries: ['Nigeria', 'South Africa', 'Kenya', 'Egypt', 'Morocco', 'Ghana'], payment: 'M-Pesa, Airtel, crypto' },
+      { name: 'Southeast Asia', countries: ['Philippines', 'Indonesia', 'Vietnam', 'Thailand', 'Malaysia'], payment: 'crypto, local banking' }
+    ];
+
+    const topics = [
+      'automated trading beats manual',
+      '24/7 market coverage while you sleep',
+      'small capital start ($5-$50)',
+      'compound interest magic',
+      'hedge against inflation',
+      'cross-border payment freedom',
+      'no KYC delays',
+      'instant deposits and withdrawals',
+      'AI-powered market analysis',
+      'whale wallet tracking',
+      'MEV protection',
+      'gas optimization',
+      'multi-exchange arbitrage',
+      'passive income generation'
+    ];
+
+    const randomRegion = regions[Math.floor(Math.random() * regions.length)];
+    const randomCountries = randomRegion.countries.slice(0, 3 + Math.floor(Math.random() * 2)).join(', ');
+    const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+
+    if (type === 'marketing') {
+      return `🌍 *${randomRegion.name} Traders*\n\nFrom ${randomCountries}—crypto automation is changing the game. Key advantage: ${randomTopic}.\n\nAccepted: ${randomRegion.payment}\nPotential: 150%+ daily\n\n_Join thousands → crypto.loopnet.tech_`;
+    }
+
+    if (type === 'motivation') {
+      return `💪 *Success Story: ${randomRegion.name}*\n\nTraders in ${randomCountries} are winning with automation. Secret? ${randomTopic}.\n\nStart small. Think big. Scale fast.\n\n_Your turn → crypto.loopnet.tech_`;
+    }
+
+    if (type === 'strategy') {
+      const strategies = ['Range trading', 'Trend following', 'Arbitrage hunting', 'Whale copying', 'Funding rate farming'];
+      const randomStrategy = strategies[Math.floor(Math.random() * strategies.length)];
+      return `⚡ *Strategy Alpha*\n\n"${randomStrategy}" works across all markets. Popular in ${randomCountries}.\n\nKey insight: ${randomTopic}\n\n_Automate it → crypto.loopnet.tech_`;
+    }
+
+    // General
+    return `🚀 *Global Update*\n\n${randomCountries} traders reporting strong results. Focus: ${randomTopic}.\n\nPayments: ${randomRegion.payment}\nAutomation: 24/7\n\n_Join global network → crypto.loopnet.tech_`;
+}
+
 export default { 
   generateOneLineSummary,
   generateDailyDigest,
@@ -254,6 +307,7 @@ export default {
   generateTrendingAlert,
   generateMoversSummary,
   summarizeDigest,
-  generate 
+  generate,
+  generateDynamicGlobalContent
 };
 

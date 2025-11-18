@@ -302,33 +302,69 @@ Stay plugged in: crypto.loopnet.tech`
 
 export const GEMINI_PROMPTS = {
   marketing: [
-    "Write a 50-word pitch for automated crypto trading targeting UK, Germany, France, Spain traders. Mention SEPA transfers, USDT/BTC deposits, 150% daily gains, 24/7 automation. End with crypto.loopnet.tech CTA.",
-    "Create a persuasive message for traders in Italy, Netherlands, Poland, Portugal about crypto automation. Emphasize instant SEPA deposits, USDT/BTC (no borders), emotion-free execution. 60 words with crypto.loopnet.tech.",
-    "Write about beginner success from Nigeria, South Africa, Kenya, Ghana using crypto automation. Mention USDT deposits, M-Pesa/Airtel Money support, consistent profits. 55 words. Add crypto.loopnet.tech.",
-    "Create urgency for traders in India, Philippines, Indonesia, Vietnam. Crypto has no borders—USDT/BTC accepted. Compare manual vs bot trading. Local payment methods supported. 50 words, include crypto.loopnet.tech.",
-    "Write pitch for Brazil, Mexico, Argentina, Colombia traders. Highlight crypto (USDT/BTC) works anywhere, cross-border transfers, automated 150%+ gains. 55 words with crypto.loopnet.tech."
+    // Global diversity - Europe
+    "Write a 50-word pitch for automated crypto trading. Target UK, Germany, France, Spain. Emphasize 24/7 automation, no emotions, USDT/BTC deposits, 150%+ daily potential. Exciting tone. End with crypto.loopnet.tech.",
+    "Create crypto automation message for Nordic traders (Sweden, Norway, Denmark, Finland). Highlight cold wallet integration, instant SEPA, passive income while working. 55 words with crypto.loopnet.tech.",
+    
+    // Asia-Pacific
+    "Write energetic pitch for Singapore, Hong Kong, South Korea, Japan crypto traders. Mention DeFi integration, staking rewards, automated arbitrage. 50 words, crypto.loopnet.tech CTA.",
+    "Target Indian, Pakistani, Bangladeshi markets. Emphasize local currency support, UPI integration possibility, small capital start ($5+). Global crypto opportunities. 55 words, crypto.loopnet.tech.",
+    "Create message for Australian, New Zealand crypto enthusiasts. Time zone advantage (trade Asia-Pacific hours), automation handles US/EU sessions. 50 words with crypto.loopnet.tech.",
+    
+    // Middle East
+    "Write for UAE, Saudi Arabia, Qatar traders. Mention Sharia-compliant options, oil money diversification, 24/7 automated trading. 45 words with crypto.loopnet.tech.",
+    
+    // Americas
+    "Target US, Canada crypto traders. Emphasize IRS-friendly tracking, Coinbase/Binance.US integration, beat inflation through automation. 50 words, crypto.loopnet.tech.",
+    "Write for Latin America (Brazil, Mexico, Argentina, Chile). Highlight hedge against local currency devaluation, dollar-denominated gains, cross-border freedom. 55 words with crypto.loopnet.tech.",
+    
+    // Africa
+    "Create message for Nigerian, Kenyan, South African traders. Mobile money integration, M-Pesa/Airtel, remittance alternative. 45 words with crypto.loopnet.tech.",
+    
+    // Trending topics
+    "Write about AI-powered trading bot detecting market manipulation, front-running prevention, MEV protection. Technical but accessible. 60 words with crypto.loopnet.tech.",
+    "Create urgency around missing out on current bull market. Automation catches opportunities 24/7. Historical bull run examples. 50 words, crypto.loopnet.tech."
   ],
   
   strategy: [
-    "Explain 'Whale Trail Sniping' strategy in 40 words: track whale accumulation, enter small positions, exit on pumps. Make it actionable and exciting. Link to crypto.loopnet.tech.",
-    "Write a 30-second alpha tip about DCA (dollar-cost averaging) optimization using red/green candle strategy. Mention bot automation. Add crypto.loopnet.tech.",
-    "Create a quick crypto arbitrage explainer: same coin, different exchanges, instant profit. 45 words max. Include crypto.loopnet.tech.",
-    "Explain sentiment-based trading: extreme fear = buy, extreme greed = sell. Mention bot tracks this 24/7. Under 50 words with crypto.loopnet.tech."
+    "Explain 'Liquidity Sandwich Detection' strategy: how bots avoid being sandwiched by MEV bots. Technical, 55 words, crypto.loopnet.tech.",
+    "Write about 'Cross-DEX Arbitrage' in 45 words: same token, different DEXes (Uniswap vs SushiSwap), instant profit. Bot automation advantage. crypto.loopnet.tech.",
+    "Explain 'Funding Rate Farming' for futures markets: earn passive income from perpetual contracts. 50 words with crypto.loopnet.tech.",
+    "Describe 'Smart Money Tracking': copy whale wallets automatically, set stop-losses, ride the wave. 45 words, crypto.loopnet.tech.",
+    "Write about 'Gas Price Optimization': bot waits for cheap gas, batches transactions, saves fees. Ethereum Layer-2 integration. 50 words with crypto.loopnet.tech.",
+    "Explain 'Impermanent Loss Hedging' for liquidity providers: bot rebalances pools automatically. 40 words, crypto.loopnet.tech.",
+    "Describe 'Meme Coin Sniper' strategy: detect new token launches, buy presale, auto-sell at 2-5x. Risk disclaimer. 55 words with crypto.loopnet.tech.",
+    "Write about 'Range Trading Bot': consolidation zones, buy support, sell resistance, repeat. Works in sideways markets. 45 words, crypto.loopnet.tech."
   ],
   
   alpha: [
-    "Write a 1-hour market update covering BTC/ETH trends, support/resistance levels, and one hot altcoin. Keep it under 80 words. Professional but exciting tone. Include crypto.loopnet.tech.",
-    "Create an on-chain alpha alert about recent whale activity (make it fictional but realistic). Mention accumulation patterns and potential pumps. 60 words, link crypto.loopnet.tech.",
-    "Write a funding rate analysis post: explain what it means when rates spike, trading implications. Under 70 words with crypto.loopnet.tech.",
-    "Generate a 'smart money moves' update highlighting large USDT transfers to exchanges (bullish signal). 50 words, add crypto.loopnet.tech."
+    "Write urgent market update: Bitcoin breaking key resistance at $[current price], altseason incoming? On-chain metrics bullish. 60 words with crypto.loopnet.tech.",
+    "Create whale alert: Large wallet moved 10,000 ETH to exchange 2 hours ago. Historical precedent analysis. Potential price impact. 65 words, crypto.loopnet.tech.",
+    "Write about unusual DEX volume spike for [random altcoin]: insider accumulation? Bot detected 300% volume increase. 55 words with crypto.loopnet.tech.",
+    "Analyze funding rates spike across exchanges: overleveraged longs = potential long squeeze incoming. Historical examples. 60 words, crypto.loopnet.tech.",
+    "Write about stablecoin minting surge: USDT/USDC supply increased $2B this week = fresh capital entering market. Bullish signal. 50 words with crypto.loopnet.tech.",
+    "Create alert about Bitcoin dominance dropping: altcoin season confirmed? Historical altseason patterns. Top 5 altcoins to watch. 65 words, crypto.loopnet.tech.",
+    "Write about unusual options activity: massive call options expiring Friday. Market makers hedging = price surge likely. 55 words with crypto.loopnet.tech.",
+    "Analyze correlation breakdown: stocks dumping but crypto pumping. Decoupling narrative, institutional adoption. 50 words with crypto.loopnet.tech."
   ],
   
   motivation: [
-    "Write inspiring message about €5 to €20 daily flips for European traders (UK, Germany, France, Spain). Mention SEPA transfers, USDT/BTC deposits, mobile-only success. 45 words with crypto.loopnet.tech.",
-    "Create motivational post for Italy, Netherlands, Sweden, Belgium traders comparing bank savings (0.5% annual) vs crypto automation (150%+ daily). SEPA/USDT deposits. 50 words, link crypto.loopnet.tech.",
-    "Write about mobile-only crypto success from Nigeria, Ghana, South Africa, Kenya. No laptop needed, USDT/BTC or M-Pesa/Airtel Money. Cross-border freedom. 45 words with crypto.loopnet.tech.",
-    "Generate encouraging post about starting small in India, Philippines, Thailand, Singapore. Crypto has no borders—USDT accepted. Local payments supported. Alpha + Automation = Wealth. Under 50 words with crypto.loopnet.tech.",
-    "Write about traders from Brazil, Mexico, Argentina, Colombia using crypto (USDT/BTC) for borderless trading. Cross-border transfers made easy. Compounding gains daily. 48 words with crypto.loopnet.tech."
+    // Global success stories
+    "Write about London trader who quit 9-5: started with £100, now earning £500/day through automation. Lifestyle freedom. 50 words with crypto.loopnet.tech.",
+    "Create story of Tokyo programmer automating his crypto portfolio: sleeps through Asian session, bot trades US hours. Geographic arbitrage. 55 words, crypto.loopnet.tech.",
+    "Write about Dubai entrepreneur diversifying oil wealth into crypto automation: hedging traditional assets, 24/7 passive income. 45 words with crypto.loopnet.tech.",
+    "Share São Paulo student's journey: $20 to $500 in 30 days. Compound interest magic, local currency inflation hedge. 50 words, crypto.loopnet.tech.",
+    "Write about Mumbai developer building side income: automation runs while working day job. Double income stream. 45 words with crypto.loopnet.tech.",
+    
+    // Mindset shifts
+    "Create motivational post: comparing traditional saving (2% annual) vs crypto automation (potential 150%+ daily). Time value of money. 50 words, crypto.loopnet.tech.",
+    "Write about overcoming fear: started small, learned by doing, now confident. Automation removes emotion. 40 words with crypto.loopnet.tech.",
+    "Explain compound interest visually: $10/day = $3,650/year. But reinvested? Exponential growth math. 45 words with crypto.loopnet.tech.",
+    "Write about early adopter advantage: 2025 is still early for crypto. Historical Bitcoin price chart reference. 50 words, crypto.loopnet.tech.",
+    
+    // Action-oriented
+    "Create urgency post: bull market won't wait. Automation captures opportunities while you hesitate. Start now. 40 words with crypto.loopnet.tech.",
+    "Write about learning curve: week 1 confused, week 2 profitable, month 1 life-changing. Automation accelerates success. 45 words, crypto.loopnet.tech."
   ]
 };
 

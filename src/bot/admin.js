@@ -221,6 +221,91 @@ export function registerAdminCommands(bot) {
       await ctx.reply(`❌ Error: ${error.message}`);
     }
   });
+
+  // Multi-channel delivery checker commands
+  bot.command('check_delivery', async (ctx) => {
+    if (!isAdmin(ctx)) return ctx.reply('Unauthorized.');
+    
+    try {
+      const { getDeliveryStats } = await import('../utils/deliveryChecker.js');
+      const hours = parseInt(ctx.message.text.split(' ')[1]) || 24;
+      const stats = await getDeliveryStats(hours);
+      
+      let response = `📊 *Delivery Report - Last ${hours}h*\n\n`;
+      response += `Total Messages: ${stats.totalMessages}\n`;
+      response += `Active Channels: ${stats.uniqueChannels.length}\n\n`;
+      
+      response += `*By Type:*\n`;
+      for (const [type, data] of Object.entries(stats.byType)) {
+        response += `• ${type}: ${data.count} msgs → ${data.channelCount} channels\n`;
+      }
+      
+      response += `\n*By Channel:*\n`;
+      for (const [channelId, data] of Object.entries(stats.byChannel)) {
+        response += `• ${channelId}: ${data.total} messages\n`;
+      }
+      
+      await ctx.reply(response, { parse_mode: 'Markdown' });
+    } catch (error) {
+      console.error('Error checking delivery:', error);
+      await ctx.reply(`❌ Error: ${error.message}`);
+    }
+  });
+
+  bot.command('verify_multichannel', async (ctx) => {
+    if (!isAdmin(ctx)) return ctx.reply('Unauthorized.');
+    
+    try {
+      const { checkMultiChannelDelivery } = await import('../utils/deliveryChecker.js');
+      const { TELEGRAM_CHANNEL_IDS } = await import('../config.js');
+      
+      const since = new Date(Date.now() - 6 * 60 * 60 * 1000); // Last 6 hours
+      const report = await checkMultiChannelDelivery(since, 50);
+      
+      let response = `🔍 *Multi-Channel Verification*\n\n`;
+      response += `Total Messages: ${report.totalMessages}\n`;
+      response += `Unique Content: ${report.uniqueContent}\n`;
+      response += `✅ Multi-channel: ${report.multiChannelDeliveries.length}\n`;
+      response += `⚠️ Single-channel: ${report.singleChannelOnly.length}\n\n`;
+      
+      response += `*Expected Channels:*\n${TELEGRAM_CHANNEL_IDS.join(', ')}\n\n`;
+      
+      if (report.multiChannelDeliveries.length > 0) {
+        response += `*Recent Multi-Channel Posts:*\n`;
+        report.multiChannelDeliveries.slice(0, 3).forEach((item, idx) => {
+          response += `${idx + 1}. [${item.type}] ${item.channelCount}/${TELEGRAM_CHANNEL_IDS.length} channels\n`;
+        });
+      }
+      
+      if (report.singleChannelOnly.length > 0) {
+        response += `\n⚠️ *Single-Channel Issues:*\n`;
+        response += `${report.singleChannelOnly.length} messages only sent to one channel\n`;
+      }
+      
+      await ctx.reply(response, { parse_mode: 'Markdown' });
+    } catch (error) {
+      console.error('Error verifying multi-channel:', error);
+      await ctx.reply(`❌ Error: ${error.message}`);
+    }
+  });
+
+  bot.command('delivery_report', async (ctx) => {
+    if (!isAdmin(ctx)) return ctx.reply('Unauthorized.');
+    
+    try {
+      await ctx.reply('📊 Generating detailed delivery report...');
+      const { printDeliveryReport } = await import('../utils/deliveryChecker.js');
+      const hours = parseInt(ctx.message.text.split(' ')[1]) || 24;
+      
+      // This will log to console/PM2 logs
+      await printDeliveryReport(hours);
+      
+      await ctx.reply(`✅ Detailed report generated and logged. Check PM2 logs with:\n\`pm2 logs crypto-hub-bot --lines 100\``, { parse_mode: 'Markdown' });
+    } catch (error) {
+      console.error('Error generating report:', error);
+      await ctx.reply(`❌ Error: ${error.message}`);
+    }
+  });
 }
 
 export default { registerAdminCommands };
