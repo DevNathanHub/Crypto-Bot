@@ -195,7 +195,16 @@ export async function generate(prompt, options = {}) {
       }
     });
 
-    return response.text.trim();
+    // Handle different response structures
+    if (response && response.text) {
+      return response.text.trim();
+    } else if (response && response.response && response.response.text) {
+      return response.response.text().trim();
+    } else if (response && typeof response === 'string') {
+      return response.trim();
+    }
+    
+    throw new Error('Invalid response structure from Gemini API');
 
   } catch (error) {
     console.error('Gemini API error:', error.message || error);
@@ -300,7 +309,32 @@ export function generateDynamicGlobalContent(type = 'general') {
     return `🚀 *Global Update*\n\n${randomCountries} traders reporting strong results. Focus: ${randomTopic}.\n\nPayments: ${randomRegion.payment}\nAutomation: 24/7\n\n_Join global network → crypto.loopnet.tech_`;
 }
 
-export default { 
+/**
+ * Generate unique marketing update using rotated prompts
+ */
+export async function generateMarketingUpdate() {
+  try {
+    // Import prompts
+    const { GEMINI_PROMPTS } = await import('../data/contentTemplates.js');
+
+    // Rotate through marketing prompts
+    if (!global.marketingPromptIndex) global.marketingPromptIndex = 0;
+    const prompts = GEMINI_PROMPTS.marketing;
+    const prompt = prompts[global.marketingPromptIndex % prompts.length];
+    global.marketingPromptIndex++;
+
+    // Generate with Gemini
+    const content = await generate(prompt, { maxTokens: 150, temperature: 0.8 });
+
+    return content;
+  } catch (error) {
+    console.error('Marketing generation failed:', error);
+    // Fallback to dynamic global content
+    return generateDynamicGlobalContent('marketing');
+  }
+}
+
+export default {
   generateOneLineSummary,
   generateDailyDigest,
   generateWhaleAlert,
@@ -308,6 +342,7 @@ export default {
   generateMoversSummary,
   summarizeDigest,
   generate,
-  generateDynamicGlobalContent
+  generateDynamicGlobalContent,
+  generateMarketingUpdate
 };
 
